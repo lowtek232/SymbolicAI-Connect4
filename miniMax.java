@@ -28,9 +28,21 @@ public class miniMax {
 		}
 		// if not then calculate all the child moves
 	} // end of min function
-	
-	public max(int depth) {
-		Random randomplay = new Random();
-		// similar to the minimum method but different moves
+
+	//MAXIMUM METHOD
+	public Gameplay maxAlgorithm(int depth, GameState gamestate) {
+		Random random = new Random();
+		if((gameBoard.ifGameOver()) || (depth == maximumDepth)) {
+			Gameplay primaryMove = new Gameplay();
+			return primaryMove;
+		} else {
+			ArrayList<GameState> childen = new ArrayList<GameState>();
+			Gameplay mininumMove = new Gameplay();
+			//maximumMove = MIN_VALUE
+			for (int i =0; i < children.size();i++) {
+				//DETERMINE THE BEST POSSIBLE VALUE
+			}
+		}
+		//return maximumMove
 	}
 }
