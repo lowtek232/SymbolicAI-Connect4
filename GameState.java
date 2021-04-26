@@ -1,4 +1,5 @@
 public class GameState {
+    //DECLARATIONS
     int board[][];
     static final int X = 1;
     static final int O = -1;
@@ -8,38 +9,70 @@ public class GameState {
     int victor;
     String victorMethod;
 
-    public GameState(){
+    //GAMESTATE CONSTRUCTOR
+    public GameState() {
         lastPlay = new GamePlay();
         lastLetterUsed = O;
         victor = O;
         board = new int[6][7];
-        for(int i=0;i<6;i++){
-            for (int j=0;j<7;j++){
+        for (int i = 0; i < 6; i++) {
+            for (int j = 0; j < 7; j++) {
                 board[i][j] = NILL;
             }
         }
     }
-
-    public boolean isValid(){
-        return null
+    //ENSURES MOVEMENT IS POSSIBLE OR NOT
+    public boolean isValid(int c) {
+        int r = getRow( int c);
+        if ((r == -1) || (c == -1) || (r > 5) || (c > 6)) {
+            return false;
+        }
+        if (board[r][c] != NILL) {
+            return false;
+        }
+        return true
     }
 
-    public boolean isColFull(){
-        return null
+    //NOTIFIES THE USER IF COLUMN IS NOT AVAILABLE
+    public boolean isColFull(int c) {
+        if (board[0][c] == NILL)
+            return false;
+        else {
+            System.out.println("Column " + (c + 1) + " is not available.");
+            return true;
+        }
     }
 
-    public int getRow(){
-        return null
+    //LOCATES EMPTY SLOT IN THE BOARD
+    public int getRow(int c) {
+        int rPos = -1;
+        for (int i = 0; i < 6; i++) {
+            if (board[i][c] == NILL) {
+                rPos = i;
+            }
+        }
+        return rPos;
     }
 
-    public GameState expandedBoard(){
-        return null
+    //ALLOWS THE BOARD TO EXPAND
+    public GameState expandedBoard(GameState b) {
+        GameState expand = new GameState();
+        expand.lastPlay = b.lastPlay;
+        expand.lastLetterUsed = b.lastLetterUsed;
+        expand.victor = b.victor;
+        expand.board = new int[6][7];
+        for (int i = 0; i < 6; i++) {
+            for (int j = 0; j < 7; j++) {
+                expand.board[i][j] = b.board[i][j];
+            }
+        }
+        return expand
     }
-
-    public LinkedList<GameState> getChildren(int l){
+    //CREATES THE CHILDREN OF THE GAMESTATE
+    public LinkedList<GameState> getChildren(int l) {
         LinkedList<GameState> children = new LinkedList<GameState>();
-        for(int i=0;i<7;i++){
-            if(isValid(i)){
+        for (int i = 0; i < 7; i++) {
+            if (isValid(i)) {
                 GameState child = expandedBoard(this);
                 child.makeMovement(i, l);
                 children.add(child);
@@ -47,9 +80,20 @@ public class GameState {
         }
         return children;
     }
-
-    public int auxiliary(){
-        return null
+    //ASSIGN VALUES TO EACH OUTCOME
+    public int auxiliary() {
+        int Xrows = 0;
+        int Orows = 0;
+        if (ifWin()) {
+            if victor == X {
+                Xrows = 90 + Xrows;
+            } else{
+                Orows = 90 + Orows;
+            }
+        }
+        Xrows = Xrows + (threeIn(X) * 10) + (twoIn(X) * 4);
+        Orows = Orows + (threeIn(O) * 5) + twoIn(O);
+        return (Orows - rows);
     }
 
     public boolean ifWin(){
@@ -127,9 +171,10 @@ public class GameState {
     }
 
     public boolean moveable(int r, int c){
+        if ((r <= -1) || (c <= -1) || (r>5) || (c>6)){
+            return false;
+        }
         return true;
     }
-    public boolean checkFullColumn(int col){
-        return false;
-    }
+
 }
