@@ -1,0 +1,81 @@
+Index: miniMax.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import java.util.ArrayList;\r\n\r\npublic class miniMax {\r\n\tint maximumDepth, aiPlayerID;\r\n\t\r\n\tpublic miniMax(int playerID) {\r\n\t\taiPlayerID = playerID;\r\n\t}\r\n\t\r\n\t// minimum method \r\n\tpublic Gameplay minAlgorithm(int depth, GameState gamestate) {\r\n\t\tRandom random = new Random();\r\n\t\t// check if the game has ended or reached maximum depth\r\n\t\tif((gameBoard.ifGameOver()) || (depth == maximumDepth)) {\r\n\t\t\t// new gameplay object represent base move\r\n\t\t\tGameplay primaryMove = new Gameplay();\r\n\t\t\treturn primaryMove.expansionMove();\r\n\t\t} else {\r\n\t\t\tArrayList<GameState> childen = new ArrayList<GameState>();\r\n\t\t\t// create another gameplay object that represenet the mininum move\r\n\t\t\tGameplay mininumMove = new Gameplay();\r\n\t\t\t/* for everything under the size of the children get\r\n\t\t\t * and get the value for what is higher value the child or lower depth\r\n\t\t\t * the one with lowest is chosen and returned\r\n\t\t\t * \r\n\t\t\t */\r\n\t\t\t\r\n\t\t}\r\n\t\t// if not then calculate all the child moves\r\n\t} // end of min function\r\n\r\n\t//MAXIMUM METHOD\r\n\tpublic Gameplay maxAlgorithm(int depth, GameState gamestate) {\r\n\t\tRandom random = new Random();\r\n\t\tif((gameBoard.ifGameOver()) || (depth == maximumDepth)) {\r\n\t\t\tGameplay primaryMove = new Gameplay();\r\n\t\t\treturn primaryMove;\r\n\t\t} else {\r\n\t\t\tArrayList<GameState> childen = new ArrayList<GameState>();\r\n\t\t\tGameplay mininumMove = new Gameplay();\r\n\t\t\t//maximumMove = MIN_VALUE\r\n\t\t\tfor (int i =0; i < children.size();i++) {\r\n\t\t\t\t//DETERMINE THE BEST POSSIBLE VALUE\r\n\t\t\t}\r\n\t\t}\r\n\t\t//return maximumMove\r\n\t}\r\n}
+===================================================================
+--- miniMax.java	(revision 587c3eeed7145c5b09b98d508f33471da921e065)
++++ miniMax.java	(date 1619425433952)
+@@ -29,20 +29,41 @@
+ 		// if not then calculate all the child moves
+ 	} // end of min function
+ 
++
++
++
++
+ 	//MAXIMUM METHOD
+ 	public Gameplay maxAlgorithm(int depth, GameState gamestate) {
+ 		Random random = new Random();
++		//SELECTS THE BEST POSSIBLE VALUE
+ 		if((gameBoard.ifGameOver()) || (depth == maximumDepth)) {
+ 			Gameplay primaryMove = new Gameplay();
++			primaryMove = expansionMove(gameBoard.lastPlay.rows, gameBoard.lastPlay.columns, gameBoard.auxillary());
+ 			return primaryMove;
+ 		} else {
+ 			ArrayList<GameState> childen = new ArrayList<GameState>();
+-			Gameplay mininumMove = new Gameplay();
+-			//maximumMove = MIN_VALUE
+-			for (int i =0; i < children.size();i++) {
+-				//DETERMINE THE BEST POSSIBLE VALUE
++			Gameplay maximumMove = new Gameplay();
++			maximumMove = maximumMove.compareMove(Integer.MIN_VALUE);
++			//NEEDS SOME MODIFICATIONS
++			for (int i=0; i < children.size(); i++) {
++				GameState child = childen.get(i);
++				GamePlay move = min(child, depth);
++				if (move.getValue() >= maximumMove.key()){
++					if ((move.key()) == maximumMove.key())) {
++						if (random.nextInt(2) == 0){
++							maximumMove.mutateRows(child.lastPlay.rows);
++							maximumMove.mutateColumns(child.lastPlay.columns);
++							maximumMove.mutateKey(move.key);
++						}
++					} else {
++						maximumMove.mutateRows(child.lastPlay.rows);
++						maximumMove.mutateColumns(child.lastPlay.columns);
++						maximumMove.mutateKey(move.key);
++					}
++				}
+ 			}
++			return maximumMove;
+ 		}
+-		//return maximumMove
+ 	}
+ }
+\ No newline at end of file
+Index: .idea/vcs.xml
+===================================================================
+--- .idea/vcs.xml	(date 1619389683367)
++++ .idea/vcs.xml	(date 1619389683367)
+@@ -0,0 +1,6 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="VcsDirectoryMappings">
++    <mapping directory="" vcs="Git" />
++  </component>
++</project>
+\ No newline at end of file
+Index: .idea/modules.xml
+===================================================================
+--- .idea/modules.xml	(date 1619389683374)
++++ .idea/modules.xml	(date 1619389683374)
+@@ -0,0 +1,8 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="ProjectModuleManager">
++    <modules>
++      <module fileurl="file://$PROJECT_DIR$/.idea/SymbolicAI-Connect4.iml" filepath="$PROJECT_DIR$/.idea/SymbolicAI-Connect4.iml" />
++    </modules>
++  </component>
++</project>
+\ No newline at end of file

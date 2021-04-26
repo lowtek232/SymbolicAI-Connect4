@@ -20,6 +20,38 @@ public class GameState {
         }
     }
 
+    public boolean isValid(){
+        return null
+    }
+
+    public boolean isColFull(){
+        return null
+    }
+
+    public int getRow(){
+        return null
+    }
+
+    public GameState expandedBoard(){
+        return null
+    }
+
+    public LinkedList<GameState> getChildren(int l){
+        LinkedList<GameState> children = new LinkedList<GameState>();
+        for(int i=0;i<7;i++){
+            if(isValid(i)){
+                GameState child = expandedBoard(this);
+                child.makeMovement(i, l);
+                children.add(child);
+            }
+        }
+        return children;
+    }
+
+    public int auxiliary(){
+        return null
+    }
+
     public boolean ifWin(){
         for (int h=5;h>=0;h--){
             for (int i=0;i<4;i++){
