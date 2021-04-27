@@ -18,13 +18,13 @@ public class miniMax {
 		// check if the game has ended or reached maximum depth
 		if((gameBoard.ifGameOver()) || (depth == maximumDepth)) {
 			// new gameplay object represent base move
-			Gameplay primaryMove = new Gameplay();
+			GamePlay primaryMove = new GamePlay();
 			return primaryMove.expansionMove();
 		} else {
 			ArrayList<GameState> childen = new ArrayList<GameState>();
 			// create another gameplay object that represenet the mininum move
-			Gameplay minimumMove = new Gameplay();
-			Gameplay move;
+			GamePlay minimumMove = new GamePlay();
+			GamePlay move;
 			minumumMove = minumumMove.compareMove(2147483647);
 			int size = children.size();
 			for(int i=0; i<size;i++) {
@@ -54,6 +54,11 @@ public class miniMax {
 			return minimumMove;
 		}
 	} // end of min function
+	
+	// call maxAlgorithm
+	public GamePlay nextMove(GameState gamestate) {
+		return maxAlgorithm(board.expandedBoard(board), 0);
+	}
 
 	//MAXIMUM METHOD
 	public GamePlay maxAlgorithm(int depth, GameState gamestate) {
