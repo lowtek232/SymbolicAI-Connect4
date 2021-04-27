@@ -56,19 +56,33 @@ public class miniMax {
 	} // end of min function
 
 	//MAXIMUM METHOD
-	public Gameplay maxAlgorithm(int depth, GameState gamestate) {
+	public GamePlay maxAlgorithm(int depth, GameState gamestate) {
 		Random random = new Random();
 		if((gameBoard.ifGameOver()) || (depth == maximumDepth)) {
-			Gameplay primaryMove = new Gameplay();
+			GamePlay primaryMove = new GamePlay();
 			return primaryMove;
 		} else {
 			ArrayList<GameState> childen = new ArrayList<GameState>();
-			Gameplay mininumMove = new Gameplay();
-			//maximumMove = MIN_VALUE
-			for (int i =0; i < children.size();i++) {
-				//DETERMINE THE BEST POSSIBLE VALUE
+			GamePlay maximumMove = new GamePlay();
+			maximumMove = maximumMove.compareMove(-2147483648);
+			for (int i=0; i < children.size(); i++) {
+				GameState child = childen.get(i);
+				GamePlay move = min(child, depth +1);
+				if (move.getValue() >= maximumMove.key()){
+					if ((move.key()) == maximumMove.key())) {
+						if (random.nextInt(2) == 0){
+							maximumMove.mutateRows(child.lastPlay.rows);
+							maximumMove.mutateColumns(child.lastPlay.columns);
+							maximumMove.mutateKey(move.key());
+							}
+						} else {
+						maximumMove.mutateRows(child.lastPlay.rows);
+						maximumMove.mutateColumns(child.lastPlay.columns);
+						maximumMove.mutateKey(move.key());
+						}
+					}
 			}
+			return maximumMove;
 		}
-		//return maximumMove
 	}
 }
