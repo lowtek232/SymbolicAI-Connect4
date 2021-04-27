@@ -7,7 +7,7 @@ public class GameState {
     int NILL = 0;
     int lastLetterUsed;
     int victor;
-    String victorMethod;
+    //String victorMethod;
 
     //GAMESTATE CONSTRUCTOR
     public GameState() {
@@ -23,14 +23,14 @@ public class GameState {
     }
     //ENSURES MOVEMENT IS POSSIBLE OR NOT
     public boolean isValid(int c) {
-        int r = getRow( int c);
+        int r = getRow(c);
         if ((r == -1) || (c == -1) || (r > 5) || (c > 6)) {
             return false;
         }
         if (board[r][c] != NILL) {
             return false;
         }
-        return true
+        return true;
     }
 
     //NOTIFIES THE USER IF COLUMN IS NOT AVAILABLE
@@ -66,7 +66,7 @@ public class GameState {
                 expand.board[i][j] = b.board[i][j];
             }
         }
-        return expand
+        return expand;
     }
     //CREATES THE CHILDREN OF THE GAMESTATE
     public LinkedList<GameState> getChildren(int l) {
@@ -85,7 +85,7 @@ public class GameState {
         int Xrows = 0;
         int Orows = 0;
         if (ifWin()) {
-            if victor == X {
+            if (victor == X) {
                 Xrows = 90 + Xrows;
             } else{
                 Orows = 90 + Orows;
@@ -93,7 +93,7 @@ public class GameState {
         }
         Xrows = Xrows + (threeIn(X) * 10) + (twoIn(X) * 4);
         Orows = Orows + (threeIn(O) * 5) + twoIn(O);
-        return (Orows - rows);
+        return (Orows - Xrows);
     }
 
     public boolean ifWin(){
@@ -117,7 +117,7 @@ public class GameState {
             }
         }
 
-        for (int h=0;h<3>;h++){
+        for (int h=0;h<3;h++){
             for(int i=0;i<4;i++){
                 if (board[h][i] == board[h+1][i+1] && board[h][i] == board[h+2][i+2] && board[h][i] == board[h+3][i+3] && board[h][i] != NILL){
                     mutateVictor(board[h][i]);
@@ -127,9 +127,9 @@ public class GameState {
             }
         }
 
-        for (int h=0;h<6>;h++){
+        for (int h=0;h<6;h++){
             for(int i=0;i<7;i++){
-                if (moveable(h-3,i+3){
+                if (moveable(h-3,i+3)){
                     if (board[h][i] == board[h-1][i+1] && board[h][i] == board[h-2][i+2] && board[h][i] == board[h-3][i+3] && board[h][i] != NILL){
                         mutateVictor(board[h][i]);
                         mutateVictorMethod("4 in a row on diagonal");
@@ -138,8 +138,110 @@ public class GameState {
                 }
             }
         }
-    }
+        
+        mutateVictor(0);
+        return false;
 
+    } // end ifWin()
+    
+    
+    public int threeIn(int player) {
+    	int nums = 0;
+    	
+    	for(int i=0;i<6;i++) {
+    		for(int j=0;j<7;j++) {
+    			if(moveable(i-2,j+2)) {
+    				if(board[i][j] == board[i - 1][j + 1] && board[i][j] == board[i - 2][j + 2] && board[i][j] == player) {
+    					nums++;
+    				}
+    			}
+    		}
+    	}
+    	
+    	for(int i=0;i<6;i++) {
+    		for(int j=0;j<7;j++) {
+    			if (moveable(i+2, j+2)) {
+    				if(board[i][j] == board[i + 1][j + 1] && board[i][j] == board[i + 2][j + 2] && board[i][j] == player) {
+    					nums++;
+    				}
+    			}
+    		}
+    	}
+    	
+    	for(int i=5;i>=0;i--) {
+    		for(int j=0;j<7;j++) {
+    			if(moveable(i-2,j)) {
+    				if(board[i][j] == board[i-1][j] && board[i][j] == board[i-1][j] && board[i][j] == player) {
+    					nums++;
+    				}
+    			}
+    		}
+    	}
+    	
+    	for(int i=5;i>=0;i--) {
+    		for(int j=0;j<7;j++) {
+    			if(moveable(i,j+2)) {
+    				if(board[i][j] == board[i][j+1] && board[i][j] == board[i][j+2] && board[i][j] == player) {
+    					nums++;
+    				}
+    			}
+    		}
+    	}
+    	
+    	return nums;
+    } //end of threeIn
+    
+    public int twoIn(int player) {	
+        int nums = 0;
+        
+        // row
+        for (int i = 5; i >= 0; i--) {
+            for (int j = 0; j < 7; j++) {
+                if (moveable(i, j + 1)) {
+                    if (board[i][j] == board[i][j + 1] && board[i][j] == player) {
+                        nums++;
+                    }
+                }
+            }
+        }
+
+        // col
+        for (int i = 5; i >= 0; i--) {
+            for (int j = 0; j < 7; j++) {
+                if (moveable(i - 1, j)) {
+                    if (board[i][j] == board[i - 1][j] && board[i][j] == player) {
+                        nums++;
+                    }
+                }
+            }
+        }
+        
+      //going down diagonal
+        for (int i = 0; i < 6; i++) {
+            for (int j = 0; j < 7; j++) {
+                if (moveable(i - 1, j + 1)) {
+                    if (board[i][j] == board[i - 1][j + 1] && board[i][j] == player) {
+                        nums++;
+                    }
+                }
+            }
+        }
+
+        //going up diagonal 
+        for (int i = 0; i < 6; i++) {
+            for (int j = 0; j < 7; j++) {
+                if (moveable(i + 1, j + 1)) {
+                    if (board[i][j] == board[i + 1][j + 1] && board[i][j] == player) {
+                        nums++;
+                    }
+                }
+            }
+        }
+
+        return nums;
+    }//end check2In
+    
+    
     public void boardPrint(){
         for(int i=0; i<6; i++){
             for(int j=0; j<7; j++){
