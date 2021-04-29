@@ -19,6 +19,7 @@ public class miniMax {
 		if((gamestate.ifGameOver()) || (depth == maximumDepth)) {
 			// new gameplay object represent base move
 			GamePlay primaryMove = new GamePlay();
+			primaryMove = primaryMove.expanisionMove(gamestate.lastPlay.rows, gamestate.lastPlay.columns, gamestate.auxillary());
 			return primaryMove.expansionMove();
 		} else {
 			ArrayList<GameState> childen = new ArrayList<GameState>();
@@ -65,6 +66,7 @@ public class miniMax {
 		Random random = new Random();
 		if((gamestate.ifGameOver()) || (depth == maximumDepth)) {
 			GamePlay primaryMove = new GamePlay();
+			primaryMove = primaryMove.expanisionMove(gamestate.lastPlay.rows, gamestate.lastPlay.columns, gamestate.auxillary());
 			return primaryMove;
 		} else {
 			ArrayList<GameState> childen = new ArrayList<GameState>();
