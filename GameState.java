@@ -278,5 +278,19 @@ public class GameState {
         }
         return true;
     }
-
+    public boolean ifGameOver() {
+        //If there is a winner, we need to know it
+        if (ifWin()) {
+            return true;
+        }
+        //Are there blank spaces in the board?
+        for(int row=0; row<6; row++) {
+            for(int col=0; col<7; col++) {
+                if(board[row][col] == NILL) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
 }
