@@ -1,23 +1,24 @@
 import javax.swing.*;
-
+import java.awt.*;
+import java.awt.event.*;
 public class Wingui {
     JFrame frame = new JFrame();
-    JLabel label = new JLabel();
+    JLabel label;
     
     public Wingui(String win) {
         frame.setTitle("Win State");
         frame.setSize(400,400);
         frame.setVisible(true);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        if (win == "Player") {
-            label.setText("You won. Congratulations!");
+        if (win.equals("Player")) {
+            label = new JLabel("You won. Congratulations!", SwingConstants.CENTER);
         }
-        else if (win == "Com") {
-            label.setText("The computer won. Better luck next time.");
+        else if (win.equals("Com")) {
+            label = new JLabel("The computer won. Better luck next time.", SwingConstants.CENTER);
         }
         else {
-            label.setText("You both have tied. Better luck next time.");
+            label = new JLabel("You both have tied. Better luck next time.", SwingConstants.CENTER);
         }
-        label.setHorizontalTextPosition(JLabel.CENTER);
+        frame.getContentPane().add(label);
     }
 }
