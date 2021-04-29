@@ -1,4 +1,7 @@
-public class GameState {
+package src;
+
+import java.util.LinkedList;
+class GameState {
     //DECLARATIONS
     int board[][];
     static final int X = 1;
@@ -7,7 +10,7 @@ public class GameState {
     int NILL = 0;
     int lastLetterUsed;
     int victor;
-    //String victorMethod;
+    String victorMethod;
 
     //GAMESTATE CONSTRUCTOR
     public GameState() {
