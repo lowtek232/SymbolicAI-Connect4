@@ -1,4 +1,4 @@
-import java.swingx.*;
+import javax.swing.*;
 
 public class Wingui {
     JFrame frame = new JFrame();
