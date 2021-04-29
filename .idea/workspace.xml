@@ -19,7 +19,10 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="51d1caf5-aebd-48ce-8767-8dda1a48fcdf" name="Default Changelist" comment="" />
+    <list default="true" id="51d1caf5-aebd-48ce-8767-8dda1a48fcdf" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/miniMax.java" beforeDir="false" afterPath="$PROJECT_DIR$/miniMax.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -28,7 +31,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="ai-component" />
+        <entry key="$PROJECT_DIR$" value="connect4game" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -41,6 +44,7 @@
     </option>
   </component>
   <component name="ProjectId" id="1rde5heIEVPjWhDlAljgwns3r70" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -64,19 +68,6 @@
       <recent name="$PROJECT_DIR$" />
     </key>
   </component>
-  <component name="RunManager">
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -86,6 +77,8 @@
       <option name="presentableId" value="Default" />
       <updated>1619310212990</updated>
       <workItem from="1619310214095" duration="3919000" />
+      <workItem from="1619653600849" duration="68000" />
+      <workItem from="1619654298987" duration="314000" />
     </task>
     <servers />
   </component>
@@ -105,10 +98,10 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="609" y="164" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1619428270558">
+    <state x="609" y="164" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1619653551526">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
-    <state x="609" y="164" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1680.1050@0.0.1680.1050" timestamp="1619428270558" />
+    <state x="609" y="164" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1680.1050@0.0.1680.1050" timestamp="1619653551526" />
     <state x="609" y="180" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.25.1680.993@0.25.1680.993" timestamp="1619311261219" />
   </component>
 </project>

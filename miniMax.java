@@ -16,7 +16,7 @@ public class miniMax {
 	public Gameplay minAlgorithm(int depth, GameState gamestate) {
 		Random random = new Random();
 		// check if the game has ended or reached maximum depth
-		if((gameBoard.ifGameOver()) || (depth == maximumDepth)) {
+		if((gamestate.ifGameOver()) || (depth == maximumDepth)) {
 			// new gameplay object represent base move
 			GamePlay primaryMove = new GamePlay();
 			return primaryMove.expansionMove();
@@ -63,7 +63,7 @@ public class miniMax {
 	//MAXIMUM METHOD
 	public GamePlay maxAlgorithm(int depth, GameState gamestate) {
 		Random random = new Random();
-		if((gameBoard.ifGameOver()) || (depth == maximumDepth)) {
+		if((gamestate.ifGameOver()) || (depth == maximumDepth)) {
 			GamePlay primaryMove = new GamePlay();
 			return primaryMove;
 		} else {
