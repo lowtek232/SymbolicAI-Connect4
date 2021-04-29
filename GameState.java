@@ -99,7 +99,7 @@ public class GameState {
     public boolean ifWin(){
         for (int h=5;h>=0;h--){
             for (int i=0;i<4;i++){
-                if (board[h][i] == board[h][i+1] && board[h][i] == board[h][i+2] && board[h][i] == board[h][i+2] && board[h][i] != NILL){
+                if (board[h][i] == board[h][i+1] && board[h][i] == board[h][i+2] && board[h][i] == board[h][i+3] && board[h][i] != NILL){
                     mutateVictor(board[h][i]);
                     mutateVictorMethod("4 in a row on row "+h);
                     return true;
